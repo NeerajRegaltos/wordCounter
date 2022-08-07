@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+    <style>
+        body {
+            padding: 20px 100px;
+            margin: 20px;
+        }
+
+        #container {
+            text-align: center;
+            background-color: rgb(199, 158, 238);
+        }
+
+        h1 {
+            padding-top: 10px;
+        }
+
+        .same {
+            color: red;
+        }
+
+        textarea {
+            font-size: 20px;
+            font-weight: bold;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Word Counter</h1>
+        <h2><span id="word" class="same">0</span> Words & <span class="same" id="char">0</span> Characters</h2>
+        <textarea name="" id="text" cols="60" rows="15"></textarea>
+    </div>
+
+
+    <script>
+        let w = document.getElementById("word");
+        let c = document.getElementById("char");
+        let text = document.getElementById("text");
+
+        text.addEventListener("input", function () {
+            let t = this.value;
+            let counter = 0;
+            let words = 0;
+
+            if (t.length === 0) {
+                c.textContent = counter;
+                w.textContent = words;
+            }
+            for (let i = 0; i < t.length; i++) {
+                if (t.charCodeAt(i) !== 32) {
+                    counter++;
+                    c.textContent = counter;
+                }
+
+            }
+            let arr = t.split(" ");
+            for (let i = 0; i < arr.length; i++) {
+                
+                if (arr[i].length !== 0) {
+                    words++;
+                    w.textContent = words;
+                }
+            }
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>
